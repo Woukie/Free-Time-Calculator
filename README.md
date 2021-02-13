@@ -5,4 +5,4 @@ A proof of concept for my own good, steps for using:
   3) Press start
 
 *Assumes one mark per minute
-![Screenshot](/screenshot.png)
+![Screenshot](/Screenshot.png)
