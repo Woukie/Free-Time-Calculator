@@ -6,5 +6,4 @@ A proof of concept for my own good, steps for using:
 
 *Assumes one mark per minute
 
-
-![Screenshot](/Screenshot.png)
+![Screenshot](https://user-images.githubusercontent.com/60012718/107859868-54809600-6e34-11eb-98e9-78226d58efb5.png)
