@@ -6,4 +6,4 @@ A proof of concept for my own good, steps for using:
 
 *Assumes one mark per minute
 
-![Screenshot](https://user-images.githubusercontent.com/60012718/107859868-54809600-6e34-11eb-98e9-78226d58efb5.png)
+![image](https://user-images.githubusercontent.com/60012718/107888055-4305bf80-6f02-11eb-86f7-bda4488ae5cf.png)
