@@ -45,9 +45,10 @@ namespace Free_Time_Calculator
             this.lblTotalWorked = new System.Windows.Forms.Label();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.lblTotalEarned = new System.Windows.Forms.Label();
-            this.lblLog = new System.Windows.Forms.Label();
+            this.lblLogTitle = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnPausePlay = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudMarks)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlay)).BeginInit();
@@ -128,10 +129,11 @@ namespace Free_Time_Calculator
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lblTotalWorked);
             this.panel2.Controls.Add(this.txtLog);
             this.panel2.Controls.Add(this.lblTotalEarned);
-            this.panel2.Controls.Add(this.lblLog);
+            this.panel2.Controls.Add(this.lblLogTitle);
             this.panel2.Name = "panel2";
             // 
             // lblTotalWorked
@@ -151,10 +153,10 @@ namespace Free_Time_Calculator
             resources.ApplyResources(this.lblTotalEarned, "lblTotalEarned");
             this.lblTotalEarned.Name = "lblTotalEarned";
             // 
-            // lblLog
+            // lblLogTitle
             // 
-            resources.ApplyResources(this.lblLog, "lblLog");
-            this.lblLog.Name = "lblLog";
+            resources.ApplyResources(this.lblLogTitle, "lblLogTitle");
+            this.lblLogTitle.Name = "lblLogTitle";
             // 
             // btnClear
             // 
@@ -169,6 +171,11 @@ namespace Free_Time_Calculator
             this.btnPausePlay.Name = "btnPausePlay";
             this.btnPausePlay.UseVisualStyleBackColor = true;
             this.btnPausePlay.Click += new System.EventHandler(this.btnPausePlay_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // Form
             // 
@@ -204,12 +211,13 @@ namespace Free_Time_Calculator
         private System.Windows.Forms.NumericUpDown nudWork;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTotalEarned;
-        private System.Windows.Forms.Label lblLog;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.RichTextBox txtLog;
         private System.Windows.Forms.Button btnPausePlay;
         private System.Windows.Forms.Label lblMinutesWorked;
         private System.Windows.Forms.Label lblTotalWorked;
+        private System.Windows.Forms.Label lblLogTitle;
+        private System.Windows.Forms.Label label1;
     }
 }
 
