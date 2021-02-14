@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace Free_Time_Calculator
 {
     public partial class Form : System.Windows.Forms.Form
     {
         private int _marks;
-        private float _freeTimeEarned, _workToPlayRatio, _totalFreeTimeEarned, _totalTimeWorked;
+        private float _minutesEarned, _workToPlayRatio, _totalFreeTimeEarned, _totalTimeWorked;
         private long _timeStarted, _timeWhenPaused;
         private bool _running, _paused;
 
@@ -37,13 +36,15 @@ namespace Free_Time_Calculator
                 return;
             }
 
-            float sessionTimeWorked = (DateTime.Now.Ticks - _timeStarted) / 600000000f;
-            _totalFreeTimeEarned += _freeTimeEarned;
+            if (_paused) btnPausePlay_Click(this, e);
+
+            var sessionTimeWorked = (DateTime.Now.Ticks - _timeStarted) / 600000000f;
+            _totalFreeTimeEarned += _minutesEarned;
             _totalTimeWorked += sessionTimeWorked;
 
-            txtLog.Text += "Earned " + _freeTimeEarned + " in " + sessionTimeWorked + " minutes" + "\n";
-            lblTotalEarned.Text = "Total time earned: " + _totalFreeTimeEarned;
-            lblTotalWorked.Text = "Total time worked: " + _totalTimeWorked;
+            txtLog.Text += $"{nudMarks.Text} | {MinutesToString(sessionTimeWorked)} | {MinutesToString(_minutesEarned)} \n";
+            lblTotalEarned.Text = "Total time earned: " + MinutesToString(_totalFreeTimeEarned);
+            lblTotalWorked.Text = "Total time worked: " + MinutesToString(_totalTimeWorked);
             btn_start.Text = "Start";
 
             btnPausePlay.Enabled = false;
@@ -62,8 +63,6 @@ namespace Free_Time_Calculator
                 _timeStarted += DateTime.Now.Ticks - _timeWhenPaused;
                 btnPausePlay.Text = "Pause";
 
-                btn_start.Enabled = true;
-
                 timer.Start();
 
                 return;
@@ -72,8 +71,6 @@ namespace Free_Time_Calculator
             _paused = true;
             _timeWhenPaused = DateTime.Now.Ticks;
             btnPausePlay.Text = "Play";
-
-            btn_start.Enabled = false;
 
             timer.Stop();
         }
@@ -92,10 +89,16 @@ namespace Free_Time_Calculator
             if (_timeStarted == 0) return;
             if (!_running) timer.Stop();
 
-            _freeTimeEarned = 2 * _marks * _marks / (_workToPlayRatio * (_marks + (DateTime.Now.Ticks - _timeStarted) / 600000000f));
+            var minutesWorked = (DateTime.Now.Ticks - _timeStarted) / 600000000f;
+            _minutesEarned = 2 * _marks * _marks / (_workToPlayRatio * (_marks + minutesWorked));
 
-            lblMinutesWorked.Text = "Minutes worked: " + (DateTime.Now.Ticks - _timeStarted) / 600000000f;
-            lblFreeTime.Text = "Minutes of free time earned: " + _freeTimeEarned;
+            lblMinutesWorked.Text = $"Time worked: {MinutesToString(minutesWorked)}";
+            lblFreeTime.Text = $"Time earned: {MinutesToString(_minutesEarned)}";
+        }
+
+        private string MinutesToString(float minutes)
+        {
+            return $"{Math.Floor(minutes / 60)}, { Math.Floor(minutes % 60)}, { Math.Floor(minutes * 60 % 60)}";
         }
     }
 }
